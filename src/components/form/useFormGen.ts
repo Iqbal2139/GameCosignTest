@@ -57,8 +57,8 @@ export function useFormGen(props: UseFormGeneratorProps): UseFormGeneratorReturn
         setModel((prev) => {
             const newModel = cloneObject(prev);
             set(newModel, path, value);
-            return prev;
-        });
+            return newModel; // Fix: Return updated model
+        });        
     }, [model, state])
 
     const handleValidFlow = async(onValid: SubmitHandler, modelForSubmit: FormModel) => {
